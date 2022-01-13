@@ -56,7 +56,7 @@ final class MainViewController: UIViewController {
     
     let eatNumbers: UILabel = {
         let lbl = UILabel()
-        lbl.text = "03:45:09"
+        lbl.text = "00:00:00"
         lbl.textAlignment = .right
         lbl.font = .systemFont(ofSize: 45, weight: .bold)
         lbl.adjustsFontSizeToFitWidth = true

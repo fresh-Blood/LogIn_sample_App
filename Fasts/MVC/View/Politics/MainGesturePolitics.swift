@@ -122,6 +122,7 @@ extension MainViewController {
     }
     @objc private func addFire(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
+            eatNumbers.layer.removeAllAnimations()
             timer?.invalidate()
             counter = 0
             DispatchQueue.global(qos: .utility).async { [weak self] in
@@ -129,7 +130,6 @@ extension MainViewController {
                     self?.synthesizer.speak((self?.utterenceArr16.randomElement()!)!)
                 }
             }
-            eatNumbers.layer.removeAllAnimations()
             UIView.animate(withDuration: 0.15,
                            delay: 0,
                            animations: { [weak self] in
