@@ -18,7 +18,7 @@ final class MainViewController: UIViewController {
     
     // MARK: hungry messages array you can set your own of course
     lazy var utterenceArr16: [AVSpeechUtterance] = [
-        AVSpeechUtterance(string: "well well well it's time to make you sexy"),
+        AVSpeechUtterance(string: "well well well it's time to make you more attractive"),
         AVSpeechUtterance(string: "I am here to help you my fat friend, stop eating, do sports"),
         AVSpeechUtterance(string: "It's not so bad, remember fat men are kind"),
         AVSpeechUtterance(string: "okay ok ok , they are rich also, and i do love reach people")
@@ -27,7 +27,8 @@ final class MainViewController: UIViewController {
     lazy var utterenceArr8: [AVSpeechUtterance] = [
         AVSpeechUtterance(string: "Bon appetite"),
         AVSpeechUtterance(string: "I think it's time to eat my friend"),
-        AVSpeechUtterance(string: "Nice work! Let's go to Mc'Donalds finally")
+        AVSpeechUtterance(string: "Nice work! Let's go to Mc'Donalds finally"),
+        AVSpeechUtterance(string: "I am soo hungry")
     ]
     lazy var synthesizer = AVSpeechSynthesizer()
     
