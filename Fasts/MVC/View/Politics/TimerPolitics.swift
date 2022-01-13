@@ -59,6 +59,6 @@ extension String {
             character == "."
         }))) ?? 0
         seconds = (Int(self) ?? 0) % 60
-        return "\(hours)ч : \(minutes)мин : \(seconds)с"
+        return "\(hours)h : \(minutes)min : \(seconds)s"
     }
 }
