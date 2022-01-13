@@ -20,15 +20,14 @@ final class MainViewController: UIViewController {
     lazy var utterenceArr16: [AVSpeechUtterance] = [
         AVSpeechUtterance(string: "well well well it's time to make you more attractive"),
         AVSpeechUtterance(string: "I am here to help you my fat friend, stop eating, do sports"),
-        AVSpeechUtterance(string: "It's not so bad, remember fat men are kind"),
-        AVSpeechUtterance(string: "okay ok ok , they are rich also, and i do love reach people")
+        AVSpeechUtterance(string: "It's not so bad, remember fat men are kind and reach"),
     ]
     // MARK: eating messages array
     lazy var utterenceArr8: [AVSpeechUtterance] = [
         AVSpeechUtterance(string: "Bon appetite"),
         AVSpeechUtterance(string: "I think it's time to eat my friend"),
         AVSpeechUtterance(string: "Nice work! Let's go to Mc'Donalds finally"),
-        AVSpeechUtterance(string: "I am soo hungry")
+        AVSpeechUtterance(string: "I am soo hungry wuuaphph")
     ]
     lazy var synthesizer = AVSpeechSynthesizer()
     
