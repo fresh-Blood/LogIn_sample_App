@@ -52,7 +52,6 @@ final class RingsCustomView: UIView {
         } else if result > 0.4 && result < 0.5 {
             averageValue = 0.35
         }
-        print(averageValue)
         return averageValue
     }
     
