@@ -6,6 +6,7 @@ var waterPersentage: CGFloat = 0
 
 final class MainViewController: UIViewController {
     
+    let queue = DispatchQueue.global(qos: .utility)
     lazy var totalSecondsOfHungryMode = 0
     lazy var totalSecondsOfEatingMode = 0
     var counter: Int = 0
@@ -29,9 +30,8 @@ final class MainViewController: UIViewController {
         AVSpeechUtterance(string: "Nice work! Let's go to Mc'Donalds finally"),
         AVSpeechUtterance(string: "I am soo hungry wuuaphph")
     ]
-    lazy var synthesizer = AVSpeechSynthesizer()
-    
-    static let shared = MainViewController()
+    let semaphore = DispatchSemaphore(value: 1)
+    let synthesizer = AVSpeechSynthesizer()
     var startValue: Double = 0
     var endValue: String = ""
     var startStepsValue: Double = 0

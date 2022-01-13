@@ -24,9 +24,11 @@ extension MainViewController {
             self.timer?.invalidate()
             self.totalSecondsOfHungryMode = 0
             self.totalSecondsOfEatingMode = 0
-            self.eatNumbers.text = "0"
+            self.eatNumbers.text = "loading..."
             DispatchQueue.global(qos: .utility).async { [weak self] in
-                self?.synthesizer.speak((self?.utterenceArr8.randomElement()!)!)
+                if self?.synthesizer.isSpeaking == false {
+                    self?.synthesizer.speak((self?.utterenceArr8.randomElement()!)!)
+                }
             }
             addFoodVC.modalTransitionStyle = .crossDissolve
             addFoodVC.modalPresentationStyle = .overCurrentContext
@@ -60,14 +62,12 @@ extension MainViewController {
             let addWaterVC = AddWaterViewController()
             addWaterVC.completion = { [weak self] text in
                 DispatchQueue.main.async {
-                    
                     guard
                         var actualValue = Int(self?.drinkNumbers.text ?? "0")
                     else {
                         print("Some error occured")
                         return
                     }
-                    
                     actualValue -= Int(text ?? "0") ?? 0
                     
                     if actualValue > 0 {
@@ -125,7 +125,9 @@ extension MainViewController {
             timer?.invalidate()
             counter = 0
             DispatchQueue.global(qos: .utility).async { [weak self] in
-                self?.synthesizer.speak((self?.utterenceArr16.randomElement()!)!)
+                if self?.synthesizer.isSpeaking == false {
+                    self?.synthesizer.speak((self?.utterenceArr16.randomElement()!)!)
+                }
             }
             eatNumbers.layer.removeAllAnimations()
             UIView.animate(withDuration: 0.15,
@@ -143,7 +145,7 @@ extension MainViewController {
                                ],
                                animations: {
                     self?.eatNumbers.textColor = #colorLiteral(red: 1, green: 0.4216593802, blue: 0.1488574743, alpha: 1)
-                    self?.eatNumbers.text = "тест"
+                    self?.eatNumbers.text = "loading..."
                     self?.eatNumbers.transform = CGAffineTransform(scaleX: 1.0, y: 1.5)
                 }, completion: { finished in
                     self?.eatNumbers.transform = .identity
