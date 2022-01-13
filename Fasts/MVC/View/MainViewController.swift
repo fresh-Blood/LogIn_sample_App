@@ -390,6 +390,8 @@ final class MainViewController: UIViewController {
         if day != savedDay || savedDay == 0 {
             endValue = goal
             drinkNumbers.text = endValue
+            ofMlLabel.text = savedMl
+            ofStepslabel.text = savedSteps
         } else if Int(savedWaterValue) ?? 0 > Int(goal) ?? 0 {
             endValue = goal
             drinkNumbers.text = endValue
