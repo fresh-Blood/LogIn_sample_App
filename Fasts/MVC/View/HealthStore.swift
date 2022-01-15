@@ -3,8 +3,6 @@ import HealthKit
 
 
 
-
-
 final class Health {
     static let healthStore = HKHealthStore()
     
