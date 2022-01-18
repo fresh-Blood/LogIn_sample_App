@@ -6,7 +6,6 @@ var waterPersentage: CGFloat = 0
 
 final class MainViewController: UIViewController {
     
-    let queue = DispatchQueue.global(qos: .utility)
     lazy var totalSecondsOfHungryMode = 0
     lazy var totalSecondsOfEatingMode = 0
     var counter: Int = 0
@@ -528,9 +527,9 @@ final class MainViewController: UIViewController {
         super.viewWillDisappear(animated)
             let newWaterValue = endValue
         guard
-            let newOfMlValue = ofMlLabel.text,
-            let newOfStepsValue = ofStepslabel.text,
-            let steps = stepsNumbers.text
+            let newWaterGoal = ofMlLabel.text,
+            let newStepsGoal = ofStepslabel.text,
+            let newStepsValue = stepsNumbers.text
         else { return }
         
         let date = Date()
@@ -541,12 +540,9 @@ final class MainViewController: UIViewController {
         
         UserDefaults.standard.set(day, forKey: CodingKeys.dateForToday.rawValue)
         UserDefaults.standard.set(newWaterValue, forKey: CodingKeys.water.rawValue)
-        UserDefaults.standard.set(newOfMlValue, forKey: CodingKeys.waterValue.rawValue)
-        UserDefaults.standard.set(newOfStepsValue, forKey: CodingKeys.stepsValue.rawValue)
-        UserDefaults.standard.set(steps, forKey: CodingKeys.steps.rawValue)
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        UserDefaults.standard.set(newWaterGoal, forKey: CodingKeys.waterValue.rawValue)
+        UserDefaults.standard.set(newStepsGoal, forKey: CodingKeys.stepsValue.rawValue)
+        UserDefaults.standard.set(newStepsValue, forKey: CodingKeys.steps.rawValue)
     }
 }
 

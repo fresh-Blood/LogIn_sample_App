@@ -6,55 +6,33 @@ final class RingsCustomView: UIView {
     let blueColor = #colorLiteral(red: 0, green: 0.6509803922, blue: 0.9843137255, alpha: 1)
     let greenColor = #colorLiteral(red: 0.1333333333, green: 0.8274509804, blue: 0.2039215686, alpha: 1)
     
-    func calculateWaterProcentage() -> Double? {
-        guard
-            let goal = UserDefaults.standard.object(forKey: CodingKeys.waterValue.rawValue) as? String,
-            let current = UserDefaults.standard.object(forKey: CodingKeys.water.rawValue) as? String,
-            let goalNumber = Int(goal.chooseNumbersOnly() ?? "Error"),
-            let currentNumber = Int(current) else { return nil }
-        
-        let value = goalNumber - currentNumber
-        let result = (Double(value) * 0.5)/Double(goalNumber)
-        var averageValue: Double = 0
-        
-        if result > 0 && result < 0.1 {
-            averageValue = 0.15
-        } else if result > 0.1 && result < 0.2 {
-            averageValue = 0.20
-        } else if result > 0.2 && result < 0.3 {
-            averageValue = 0.25
-        } else if result > 0.3 && result < 0.4 {
-            averageValue = 0.30
-        } else if result > 0.4 && result < 0.5 {
-            averageValue = 0.35
-        }
-        return averageValue
-    }
-    func calculateStepsProcentage() -> Double? {
-        guard
-            let goal = UserDefaults.standard.object(forKey: CodingKeys.stepsValue.rawValue) as? String,
-            let current = UserDefaults.standard.object(forKey: CodingKeys.steps.rawValue) as? String,
-            let goalNumber = Int(goal.chooseNumbersOnly() ?? "Error"),
-            let currentNumber = Int(current) else { return nil }
-        
-        let value = goalNumber - currentNumber
-        let result = (Double(value) * 0.5)/Double(goalNumber)
-        var averageValue: Double = 0
-        
-        if result > 0 && result < 0.1 {
-            averageValue = 0.15
-        } else if result > 0.1 && result < 0.2 {
-            averageValue = 0.20
-        } else if result > 0.2 && result < 0.3 {
-            averageValue = 0.25
-        } else if result > 0.3 && result < 0.4 {
-            averageValue = 0.30
-        } else if result > 0.4 && result < 0.5 {
-            averageValue = 0.35
-        }
-        return averageValue
-    }
+    let waterGoal = UserDefaults.standard.object(forKey: CodingKeys.waterValue.rawValue) as? String,
+        currentWaterValue = UserDefaults.standard.object(forKey: CodingKeys.water.rawValue) as? String,
+        stepsGoal = UserDefaults.standard.object(forKey: CodingKeys.stepsValue.rawValue) as? String,
+        currentStepsValue = UserDefaults.standard.object(forKey: CodingKeys.steps.rawValue) as? String
     
+    func calculateProcentage(goal: String, current: String) -> Double? {
+        guard
+            let goalNumber = Int(goal.chooseNumbersOnly() ?? "Error"),
+            let currentNumber = Int(current) else { return nil }
+        
+        let value = goalNumber - currentNumber
+        let result = (Double(value) * 0.5)/Double(goalNumber)
+        var averageValue: Double = 0
+        
+        if result > 0 && result < 0.1 {
+            averageValue = 0.15
+        } else if result > 0.1 && result < 0.2 {
+            averageValue = 0.20
+        } else if result > 0.2 && result < 0.3 {
+            averageValue = 0.25
+        } else if result > 0.3 && result < 0.4 {
+            averageValue = 0.30
+        } else if result > 0.4 && result < 0.5 {
+            averageValue = 0.35
+        }
+        return averageValue
+    }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -88,8 +66,8 @@ final class RingsCustomView: UIView {
             }
         }
         
-        addArc(color: yellowColor, percentage: calculateStepsProcentage() ?? 0.15, radius: 80, lineWidth: 35)
-        addArc(color: blueColor, percentage: calculateWaterProcentage() ?? 0.25, radius: 135, lineWidth: 35)
+        addArc(color: yellowColor, percentage: calculateProcentage(goal: stepsGoal ?? "10000", current: currentStepsValue ?? "0") ?? 0.15, radius: 80, lineWidth: 35)
+        addArc(color: blueColor, percentage: calculateProcentage(goal: waterGoal ?? "3000", current: currentWaterValue ?? "0") ?? 0.25, radius: 135, lineWidth: 35)
         addArc(color: greenColor, percentage: 0.3, radius: 190, lineWidth: 35)
         
         addArc(color: yellowColor.withAlphaComponent(0.5), percentage: 3.0 / 6.0, radius: 80, lineWidth: 50)

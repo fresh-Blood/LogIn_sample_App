@@ -114,12 +114,12 @@ extension EditGoalsViewController {
     }
     func setAddButtonGesturePolitics() {
         let gesture = UILongPressGestureRecognizer(target: self,
-                                                   action: #selector(addWater))
+                                                   action: #selector(addGoals))
         gesture.minimumPressDuration = 0
         setNewGoalsButton.addGestureRecognizer(gesture)
     }
     
-    @objc private func addWater(_ gesture: UILongPressGestureRecognizer) {
+    @objc private func addGoals(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             UIView.animate(withDuration: 0.1,
                            delay: 0,
